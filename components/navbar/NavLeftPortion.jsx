@@ -4,7 +4,7 @@ import { FaSun } from 'react-icons/fa'
 const NavLeftPortion = () => {
   return (
     <div className='flex gap-4'>
-        <section><div className='p-3.5 rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 w-fit '><FaSun /></div></section>
+        <section><div className='p-3.5 rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 w-fit text-white'><FaSun className='text-3xl'/></div></section>
         <section className='font-bold text-3xl '>
             <span className='text-black'>Sun</span>
             <span className='text-orange-400'>Cart</span>
