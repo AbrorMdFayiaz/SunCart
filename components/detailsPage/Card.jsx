@@ -12,14 +12,18 @@ const Card = () => {
           {/* Left Section : Image */}
 
           <section className="my-auto">
-            <figure className="">
+            <figure className="relative">
               <Image
                 src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                 alt="Shoes"
                 height={1200}
                 width={800}
                 className="rounded-xl"
-              ></Image>
+              >
+              </Image>
+                <p className="absolute top-3 left-3 badge rounded-2xl bg-white text-black font-bold">
+                    Accessories
+                </p>
             </figure>
           </section>
 

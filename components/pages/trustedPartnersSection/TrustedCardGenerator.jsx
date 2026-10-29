@@ -7,7 +7,7 @@ const TrustedCardGenerator = () => {
     <div>
           <Card className=" gap-2 bg-base-100 p-6 rounded-2xl">
             <div className=' p-2.5 w-fit rounded-xl text-2xl mx-auto'>
-                <Image className=' border-2 border-orange-200 w-20 rounded-xl' width={400} height={400} src={"https://cdn.creativefabrica.com/2022/09/03/sunglasses-or-eyeglass-company-logo-Graphics-37681824-1.jpg"}></Image>
+                <Image alt='Logo of trusted Partners' className=' border-2 border-orange-200 w-20 rounded-xl' width={400} height={400} src={"https://cdn.creativefabrica.com/2022/09/03/sunglasses-or-eyeglass-company-logo-Graphics-37681824-1.jpg"}></Image>
             </div>
             <Card.Header>
               <Card.Title className='text-xl font-bold pt-2 pb-3.5'>SunShade</Card.Title>
