@@ -2,11 +2,11 @@ import React from 'react'
 import DetailsTop from './DetailsTop'
 import Card from './Card'
 
-const Detail = () => {
+const Detail = ({id}) => {
   return (
     <div>
         <DetailsTop></DetailsTop>
-        <Card></Card>
+        <Card id={id} ></Card>
     </div>
   )
 }

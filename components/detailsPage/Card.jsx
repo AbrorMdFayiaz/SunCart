@@ -4,7 +4,12 @@ import React from "react";
 import { FaArrowRight, FaStar } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 
-const Card = () => {
+const Card = async ({id}) => {
+
+
+
+  const res = await  fetch(`https://json-server-for-suncart-website.onrender.com/products/${id}`);
+  const item = await res.json() ;
   return (
     <div className="bg-base-200 py-10">
       <article className="card bg-base-100 shadow-sm container mx-auto flex justify-between">
@@ -14,7 +19,7 @@ const Card = () => {
           <section className="my-auto">
             <figure className="relative">
               <Image
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                src={item.image}
                 alt="Shoes"
                 height={1200}
                 width={800}
@@ -22,7 +27,7 @@ const Card = () => {
               >
               </Image>
                 <p className="absolute top-3 left-3 badge rounded-2xl bg-white text-black font-bold">
-                    Accessories
+                    {item.category}
                 </p>
             </figure>
           </section>
@@ -31,9 +36,9 @@ const Card = () => {
 
           <section className="space-y-4">
           {/* Brand & Product Name */}
-            <p className="text-orange-600 font-bold">AlohaVibe</p>
+            <p className="text-orange-600 font-bold">{item.brand}</p>
             <h2 className="card-title font-black text-3xl">
-              UV Protection Sunglasses
+              {item.name}
             </h2>
 
             {/* 2 Badges - Rating & Stock */}
@@ -43,27 +48,25 @@ space-x-4"
             >
               <p className="badge rounded-2xl text-orange-800 bg-orange-100 border-orange-200 font-bold">
                 <FaStar className="text-yellow-400" />
-                4.7 Rating
+                {item.rating} Rating
               </p>
               <p className="badge rounded-2xl bg-green-100 border-green-200 text-green-900 font-bold">
-                In Stock (25 available)
+                {item?.stock ? `In Stock (${item.stock} available)` : "Not Available"}
               </p>
             </section>
 
             {/* Price */}
 
             <article className=" flex items-end">
-              <h3 className="font-black text-3xl">$28 </h3>
+              <h3 className="font-black text-3xl">${item.price} </h3>
               <p className="text-gray-400 text-base font-bold ml-1">
-                {" "}
                 USD (Free Shipping)
               </p>
             </article>
 
             {/* Product Description */}
             <p>
-              A card component has a figure, a body part, and inside body there
-              are title and actions parts
+              {item.description}
             </p>
             {/* Divider */}
             <div className="divider"></div>
