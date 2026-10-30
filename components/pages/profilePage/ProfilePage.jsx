@@ -1,4 +1,7 @@
+import { auth } from "@/app/lib/auth";
+import { authClient } from "@/app/lib/auth-client";
 import { Card } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,7 +10,14 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
 
-const ProfilePage = () => {
+
+const ProfilePage = async () => {
+
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+console.log(session.user,"see")
+const user=session.user;
   return (
     <div>
       <div className="bg-base-200  p-10 ">
@@ -17,7 +27,7 @@ const ProfilePage = () => {
               <div className="rounded-full border-6 border-orange-500 w-40 h-40 overflow-hidden shrink-0">
                 <Image
                   className="rounded-full object-contain"
-                  src={`https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D`}
+                  src={user?.image}
                   width={400}
                   height={400}
                   alt="profile picture"
@@ -29,14 +39,14 @@ const ProfilePage = () => {
                 </div>
                 <br />
                 <h1 className="text-black font-black text-3xl my-auto">
-                  Alex Johnson
+                  {user.name}
                 </h1>
                 <Link
                   href="/"
                   className="block mt-3 text-xl text-gray-600 font-semibold"
                 >
                   <IoIosMail className="inline-block text-orange-400" />{" "}
-                  alex.johnson@suncart.com
+                  {user.email}
                 </Link>
               </section>
             </article>
