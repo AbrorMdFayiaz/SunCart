@@ -10,11 +10,11 @@ const Banner = () => {
           <div className="hero-content flex-col lg:flex-row-reverse">
             <img
               alt="Tailwind CSS hero component"
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-              className="max-w-sm rounded-lg shadow-2xl"
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
+              className="max-w-xl rounded-lg shadow-2xl"
             />
             <div>
-                <p className='animate__animated animate__bounce  animate__fast'>Hot Deals 🔥 Summer Sale 50% OFF</p>
+                <div className='animate__animated animate__bounce  animate__slow animate__infinite text-orange-400 font-extrabold py-6'>Hot Deals 🔥 Summer Sale 50% OFF</div>
               <h1 className="text-5xl font-bold">Elevate Your <span className='bg-linear-to-br from-orange-300 to-violet-600 text-transparent bg-clip-text'>Summer Vibe</span></h1>
               <p className="py-6">
                 Discover our exclusive collection of seasonal sunglasses, trendy beach apparel, and nourishing skincare essentials designed for unforgettable adventures.
