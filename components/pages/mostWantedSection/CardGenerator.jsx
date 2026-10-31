@@ -9,11 +9,11 @@ const CardGenerator = ({item:a}) => {
         <article className="card bg-base-100 shadow-sm h-full">
             <section className='relative h-full'>
                 <div className="badge bg-blue-950 rounded-2xl  font-bold text-white absolute top-13 right-13"><FaStar className='text-yellow-400'/>{a.rating}</div>
-                <div className="badge absolute top-13 left-13 text-black font-bold">{a.category}</div>
+                <div className="badge absolute top-13 left-13 text-black font-bold shadow-lg">{a.category}</div>
                 <figure className="px-10 pt-10 flex">
                     <Image
                       src={a.image}
-                      alt="Shoes"
+                      alt={a.alt}
                       height={600}
                       width={600}
                       className="rounded-xl align-middle" ></Image>

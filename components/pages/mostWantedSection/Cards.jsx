@@ -12,7 +12,7 @@ const Cards = async () => {
     <div className='grid grid-cols-3 gap-5'>
 
       {
-        data.map((item,i)=> <CardGenerator item={item} key={i}></CardGenerator> )
+        ([data[10],data[11],data[13]]).map((item,i)=> <CardGenerator item={item} key={i}></CardGenerator> )
       }
     </div>
   )
