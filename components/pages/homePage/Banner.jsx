@@ -9,7 +9,7 @@ const Banner = () => {
       <div className="hero min-h-screen container mx-auto">
         <div className="hero-content flex-col lg:flex-row gap-10">
           <div>
-            <div className="animate__animated animate__bounce  animate__slow animate__infinite text-orange-400 font-extrabold py-6">
+            <div className="animate__animated animate__bounce  animate__slow animate__infinite text-orange-400 font-extrabold py-6 ">
               Hot Deals 🔥 Summer Sale 50% OFF
             </div>
             <h1 className="text-5xl font-bold">
@@ -48,5 +48,6 @@ const Banner = () => {
     </div>
   );
 };
+
 
 export default Banner;
