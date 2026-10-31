@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaSun } from "react-icons/fa";
+import { createAuthClient } from "better-auth/client";
 
 const page = () => {
   const {
@@ -17,35 +18,39 @@ const page = () => {
   });
   const onSubmit = async (formHookData) => {
     // react hook form
-    console.log(formHookData , "ab")
-
+    console.log(formHookData, "ab");
 
     // better auth
-    const  { data, error } = await authClient.signUp.email({
-        email:formHookData.email, // user email address
-        password:formHookData.password, // user password -> min 8 characters by default
-        name:formHookData.name, // user display name
-        image:formHookData.photo, // User image URL (optional)
-        callbackURL: "/signin" // A URL to redirect to after the user verifies their email (optional)
-    }, 
-    {
+    const { data, error } = await authClient.signUp.email(
+      {
+        email: formHookData.email, // user email address
+        password: formHookData.password, // user password -> min 8 characters by default
+        name: formHookData.name, // user display name
+        image: formHookData.photo, // User image URL (optional)
+        callbackURL: "/signin", // A URL to redirect to after the user verifies their email (optional)
+      },
+      {
         // onRequest => {
         //     //show loading
         // },
-        onSuccess:()=> {
-            //redirect to the dashboard or sign in page
-            console.log(data , error,"up")
+        onSuccess: () => {
+          //redirect to the dashboard or sign in page
+          console.log(data, error, "up");
         },
         // onError => {
         //     // display the error message
         //     alert(ctx.error.message);
         // },
-}
-);
-
-
-
-
+      },
+    );
+    // google signin through better-auth
+  };
+  const googleSignInHandler = async () => {
+    const authClient = createAuthClient();
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data, "google sign in data");
   };
   return (
     <div className="">
@@ -160,50 +165,50 @@ const page = () => {
               className="w-full rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none"
               type="submit"
             >
-              Sign In
+              Regester
             </Button>
             <div className="divider text-xs text-gray-400 font-bold">
               OR CONTINUE WITH
             </div>
-            <button className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
-              <svg
-                aria-label="Google logo"
-                width="16"
-                height="16"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <g>
-                  <path d="m0 0H512V512H0" fill="#fff"></path>
-                  <path
-                    fill="#34a853"
-                    d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                  ></path>
-                  <path
-                    fill="#4285f4"
-                    d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                  ></path>
-                  <path
-                    fill="#fbbc02"
-                    d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                  ></path>
-                  <path
-                    fill="#ea4335"
-                    d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                  ></path>
-                </g>
-              </svg>
-              Continue with Google
-            </button>
-            <h1 className="text-sm pt-2">
-              Already have an account?
-              <Link href={"/signup"} className="text-orange-500 font-semibold">
-                {" "}
-                Login here
-              </Link>
-            </h1>
           </Card.Footer>
         </Form>
+        <button onClick={() => googleSignInHandler()} className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
+          <svg
+            aria-label="Google logo"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path
+                fill="#fbbc02"
+                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Continue with Google
+        </button>
+        <h1 className="text-sm pt-2">
+          Already have an account?
+          <Link href={"/signin"} className="text-orange-500 font-semibold">
+            {" "}
+            Login here
+          </Link>
+        </h1>
       </Card>
     </div>
   );

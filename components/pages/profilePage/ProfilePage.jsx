@@ -1,21 +1,42 @@
-
-"use client"
+"use client";
 import { authClient } from "@/app/lib/auth-client";
 import { Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaArrowRight, FaStar, FaUserEdit } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaSign,
+  FaSignInAlt,
+  FaStar,
+  FaUserEdit,
+} from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
-
+import { PiSignInBold } from "react-icons/pi";
 
 const ProfilePage = () => {
-
-const { data: session } = authClient.useSession();
-console.log(session?.user,"see")
-const user=session?.user;
+  const { data: session } = authClient.useSession();
+  console.log(session?.user, "see");
+  if (!session) {
+    return (
+      <div className="bg-base-200  p-10 ">
+        <section className="container mx-auto text-center bg-base-100 card w-fit p-15">
+          <h1 className="text-orange-400 font-black text-3xl">No User Data Exists !!</h1>
+          <p className="text-gray-500 font-bold pt-16 pb-2">Sign In Below to Get User Info.</p>
+          <Link
+            href={"/signin"}
+            className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-base"
+          >
+            <PiSignInBold />
+            Sign In
+          </Link>
+        </section>
+      </div>
+    );
+  }
+  const user = session?.user;
   return (
     <div>
       <div className="bg-base-200  p-10 ">

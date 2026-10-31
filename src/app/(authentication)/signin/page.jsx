@@ -2,6 +2,7 @@
 import { authClient } from "@/app/lib/auth-client";
 import { Button, Card, Form, Input, Label, TextField } from "@heroui/react";
 import { router } from "better-auth/api";
+import { createAuthClient } from "better-auth/react";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -32,6 +33,16 @@ const page = () => {
 
 
   };
+
+  const googleSignInHandler = async () => {
+    const authClient = createAuthClient();
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    console.log(data, "google sign in data");
+  };
+
+
   return (
     <div className=''>
             <Card className="mx-auto max-w-md text-center">
@@ -114,7 +125,9 @@ const page = () => {
             <div className="divider text-xs text-gray-400 font-bold">
               OR CONTINUE WITH
             </div>
-            <button className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
+          </Card.Footer>
+        </Form>
+            <button onClick={()=>googleSignInHandler()} className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
               <svg
                 aria-label="Google logo"
                 width="16"
@@ -145,14 +158,12 @@ const page = () => {
               Continue with Google
             </button>
             <h1 className="text-sm pt-2">
-              Already have an account?
+              Don't have an account?
               <Link href={"/signup"} className="text-orange-500 font-semibold">
                 {" "}
-                Login here
+                Regester here
               </Link>
             </h1>
-          </Card.Footer>
-        </Form>
     </Card>
     </div>
   )
