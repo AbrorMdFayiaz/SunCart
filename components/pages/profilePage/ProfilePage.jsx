@@ -1,7 +1,7 @@
-import { auth } from "@/app/lib/auth";
+
+"use client"
 import { authClient } from "@/app/lib/auth-client";
 import { Card } from "@heroui/react";
-import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,13 +11,11 @@ import { FiLogOut } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
 
 
-const ProfilePage = async () => {
+const ProfilePage = () => {
 
-    const session = await auth.api.getSession({
-        headers: await headers()
-    })
-console.log(session.user,"see")
-const user=session.user;
+const { data: session } = authClient.useSession();
+console.log(session?.user,"see")
+const user=session?.user;
   return (
     <div>
       <div className="bg-base-200  p-10 ">
@@ -39,14 +37,14 @@ const user=session.user;
                 </div>
                 <br />
                 <h1 className="text-black font-black text-3xl my-auto">
-                  {user.name}
+                  {user?.name}
                 </h1>
                 <Link
                   href="/"
                   className="block mt-3 text-xl text-gray-600 font-semibold"
                 >
                   <IoIosMail className="inline-block text-orange-400" />{" "}
-                  {user.email}
+                  {user?.email}
                 </Link>
               </section>
             </article>
@@ -100,7 +98,7 @@ const user=session.user;
 
             <section className="flex justify-between">
               <Link
-                href={"/products"}
+                href={"/updateprofile"}
                 className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-base"
               >
                 {" "}
