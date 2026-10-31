@@ -1,15 +1,25 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRight, FaStar } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 
-const Card = async ({id}) => {
+const Card = ({id}) => {
 
-
-
-  const res = await  fetch(`https://json-server-for-suncart-website.onrender.com/products/${id}`);
-  const item = await res.json() ;
+const [item, SetItem]=useState("");
+useEffect(()=>{
+  const dataHandler = async () => {
+    
+    const res = await  fetch(`https://json-server-for-suncart-website.onrender.com/products/${id}`);
+    const data = await res.json() ;
+    console.log(data,"dataCard")
+    SetItem(data);
+    console.log("a")
+  }
+  dataHandler();
+}
+,[id])
   return (
     <div className="bg-base-200 py-10">
       <article className="card bg-base-100 shadow-sm container mx-auto flex justify-between">
@@ -18,14 +28,15 @@ const Card = async ({id}) => {
 
           <section className="my-auto">
             <figure className="relative">
-              <Image
-                src={item.image}
+              {item.image ? 
+                            <Image
+                src={item.image ||""}
                 alt="Shoes"
                 height={1200}
                 width={800}
                 className="rounded-xl"
               >
-              </Image>
+              </Image>:<span className="loading loading-spinner text-warning"></span>}
                 <p className="absolute top-3 left-3 badge rounded-2xl bg-white text-black font-bold">
                     {item.category}
                 </p>

@@ -5,7 +5,7 @@ import NavRightPortion from './NavRightPortion'
 
 const Navbar = () => {
   return (
-    <div className='flex justify-between py-7 bg-base-100 container mx-auto'>
+    <div className='flex justify-between py-7 bg-base-100 container mx-auto items-center'>
       <NavLeftPortion></NavLeftPortion>
       <NavMiddlePortion></NavMiddlePortion>
       <NavRightPortion></NavRightPortion>

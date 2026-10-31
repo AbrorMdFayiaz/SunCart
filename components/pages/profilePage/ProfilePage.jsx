@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/app/lib/auth-client";
 import { Card } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -17,6 +18,7 @@ import { IoIosMail } from "react-icons/io";
 import { PiSignInBold } from "react-icons/pi";
 
 const ProfilePage = () => {
+    const router = useRouter();
   const { data: session } = authClient.useSession();
   console.log(session?.user, "see");
   if (!session) {
@@ -36,6 +38,21 @@ const ProfilePage = () => {
       </div>
     );
   }
+
+    // signout functionality
+    const signOutHandler = async () => {
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            router.replace("/");
+          router.refresh(); // redirect to login page
+          },
+        },
+      });
+    };
+
+
+
   const user = session?.user;
   return (
     <div>
@@ -126,7 +143,7 @@ const ProfilePage = () => {
                 <FaUserEdit /> Update Information
               </Link>
 
-              <button className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-base">
+              <button onClick={()=>signOutHandler()} className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-base">
                 Logout
               </button>
             </section>
