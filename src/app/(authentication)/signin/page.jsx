@@ -158,9 +158,9 @@ const page = () => {
               Continue with Google
             </button>
             <h1 className="text-sm pt-2">
-              Don't have an account?
-              <Link href={"/signup"} className="text-orange-500 font-semibold">
-                {" "}
+              Don't have an account? 
+               <Link href={"/signup"} className="block sm:inline-block text-orange-500 font-semibold pl-2">
+                {"   "}
                 Regester here
               </Link>
             </h1>

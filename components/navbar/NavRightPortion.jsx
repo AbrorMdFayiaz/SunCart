@@ -25,34 +25,34 @@ const NavRightPortion = () => {
     });
   };
   return (
-    <div className="flex gap-7 font-bold">
+    <div className="flex gap-1 sm:gap-3 font-bold items-center">
       {session ? (
         // User Icon , name and LogOut button - showed if session exists
         <>
           <Link
             href={"/profile"}
-            className="bg-[#fff7ed] rounded-full flex gap-3 p-2 pr-5 border-2 border-orange-200"
+            className="bg-[#fff7ed] rounded-full flex gap-3 p-1.5 pr-3 border-2 border-orange-200"
           >
-            <div className="rounded-full border-2 border-orange-500 w-10 h-10 overflow-hidden shrink-0">
+            <div className="rounded-full border-2 border-orange-500 w-7.5 h-7.5 overflow-hidden shrink-0">
               <Image
                 className="rounded-full object-contain"
                 src={
                   user?.image ||
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYc_nH36xssx6tM83og18mzFq7OtM8fZ2-YR2ggUZk6g&s=10"
                 }
-                width={40}
-                height={40}
+                width={30}
+                height={30}
                 alt="profile picture"
               ></Image>
             </div>
-            <section className="text-gray-600 my-auto">{user?.name}</section>
+            <section className="text-gray-600 my-auto hidden lg:inline-block">{user?.name}</section>
           </Link>
           <button
             onClick={() => signOutHandler()}
-            className="flex gap-1.5 justify-center items-center hover:bg-[#fef2f2] p-4 rounded-3xl"
+            className="btn gap-1.5 justify-center items-center hover:bg-amber-400 p-4 rounded-3xl"
           >
             <FiLogOut className="font-bold" />
-            <span> Logout</span>
+            <span className="hidden sm:inline"> Logout</span>
           </button>
         </>
       ) : (
@@ -61,15 +61,15 @@ const NavRightPortion = () => {
         <>
           <Link
             href={"/signin"}
-            className="btn btn-primary rounded-2xl bg-white border-none text-black p-6"
+            className="btn btn-primary rounded-2xl bg-white border-none text-black p-4 shadow-md hover:bg-orange-400 hover:text-white flex gap-1.5 justify-center items-center"
           >
             Log In
           </Link>
           <Link
             href={"/signup"}
-            className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6"
+            className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-4"
           >
-            Regester
+            Register
           </Link>
         </>
       )}

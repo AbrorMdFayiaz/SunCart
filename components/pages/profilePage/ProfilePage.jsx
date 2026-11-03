@@ -59,7 +59,7 @@ const ProfilePage = () => {
       <div className="bg-base-200  p-10 ">
         <article className="card bg-base-100 shadow-sm container mx-auto max-w-200 rounded-2xl">
           <div className="card-body ">
-            <article className="flex items-center gap-5">
+            <article className="flex sm:flex-row flex-col items-center gap-5">
               <div className="rounded-full border-6 border-orange-500 w-40 h-40 overflow-hidden shrink-0">
                 <Image
                   className="rounded-full object-contain"
@@ -70,16 +70,16 @@ const ProfilePage = () => {
                 ></Image>
               </div>
               <section className="space-y-3">
-                <div className="badge bg-orange-100 text-orange-700 font-bold text-base p-4 rounded-2xl">
+                <div className="badge  bg-orange-100 text-orange-700 font-bold text-xs sm:text-base p-4 rounded-2xl">
                   Summer VIP Member
                 </div>
                 <br />
-                <h1 className="text-black font-black text-3xl my-auto">
+                <h1 className="text-black font-black text-base sm:text-2xl my-auto">
                   {user?.name}
                 </h1>
                 <Link
                   href="/"
-                  className="block mt-3 text-xl text-gray-600 font-semibold"
+                  className="block mt-3 text-xs sm:text-base text-gray-600 font-semibold"
                 >
                   <IoIosMail className="inline-block text-orange-400" />{" "}
                   {user?.email}
@@ -89,9 +89,9 @@ const ProfilePage = () => {
 
             <div className="divider"></div>
 
-            <article className="grid grid-cols-3 gap-4">
+            {/* <article className="grid grid-cols-3 gap-4"> */}
               {/* 1 */}
-              <div className="">
+              {/* <div className="">
                 <Card className=" gap-2  bg-orange-50 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="text-orange-600 font-bold">
@@ -102,10 +102,10 @@ const ProfilePage = () => {
                     </Card.Title>
                   </Card.Header>
                 </Card>
-              </div>
+              </div> */}
 
               {/* 2 */}
-              <div className="">
+              {/* <div className="">
                 <Card className=" gap-2 bg-base-200 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="font-medium text-gray-500">
@@ -116,9 +116,9 @@ const ProfilePage = () => {
                     </Card.Title>
                   </Card.Header>
                 </Card>
-              </div>
+              </div> */}
               {/* 3 */}
-              <div className="">
+              {/* <div className="">
                 <Card className=" gap-2 bg-base-200 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="font-medium text-gray-500">
@@ -130,20 +130,20 @@ const ProfilePage = () => {
                   </Card.Header>
                 </Card>
               </div>
-            </article>
+            </article> */}
 
-            <div className="divider"></div>
+            {/* <div className="divider"></div> */}
 
-            <section className="flex justify-between">
+            <section className="flex justify-between sm:flex-row flex-col gap-4">
               <Link
                 href={"/updateprofile"}
-                className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-base"
+                className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-xs sm:text-base"
               >
                 {" "}
                 <FaUserEdit /> Update Information
               </Link>
 
-              <button onClick={()=>signOutHandler()} className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-base">
+              <button onClick={()=>signOutHandler()} className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-xs sm:text-base">
                 Logout
               </button>
             </section>

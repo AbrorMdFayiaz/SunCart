@@ -35,7 +35,7 @@ const page = () => {
             <FaSun className="text-3xl" />
           </div>
           {/*  */}
-          <Card.Title className="text-3xl font-black">
+          <Card.Title className="text-3xl font-black leading-tight">
             Update Profile Information
           </Card.Title>
           <Card.Description>

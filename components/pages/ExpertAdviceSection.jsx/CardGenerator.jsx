@@ -2,7 +2,7 @@ import { Avatar, Card } from '@heroui/react'
 import React from 'react'
 import { MdWaterDrop } from 'react-icons/md'
 
-const CardGenerator = ({icon}) => {
+const CardGenerator = ({icon, title, description}) => {
   return (
     <div>
       <Card className=" gap-2 bg-base-100 p-6 rounded-2xl">
@@ -10,8 +10,8 @@ const CardGenerator = ({icon}) => {
         {icon}
         </div>
         <Card.Header>
-          <Card.Title className='text-xl font-bold pt-2 pb-3.5'>Hydration is Key</Card.Title>
-          <Card.Description className='font-medium text-gray-500' >Drink at least 3 liters of water daily. Infuse your water with citrus or mint for a refreshing antioxidant boost under the hot sun.</Card.Description>
+          <Card.Title className='text-xl font-bold pt-2 pb-3.5'>{title}</Card.Title>
+          <Card.Description className='font-medium text-gray-500' >{description}</Card.Description>
         </Card.Header>
       </Card>
     </div>

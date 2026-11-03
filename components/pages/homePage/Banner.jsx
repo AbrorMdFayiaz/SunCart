@@ -41,7 +41,7 @@ const Banner = () => {
           <img
             alt="Tailwind CSS hero component"
             src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80"
-            className="max-w-xl rounded-lg shadow-2xl"
+            className="md:max-w-xl rounded-lg shadow-2xl"
           />
         </div>
       </div>

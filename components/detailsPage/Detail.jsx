@@ -10,11 +10,11 @@ const Detail = ({id}) => {
     const { data: session } = authClient.useSession();
     console.log(session?.user, "see");
   return (
-    <div>
+    <div className="">
         <DetailsTop></DetailsTop>
         {
             !session? 
-      <div className="bg-base-200  p-10 ">
+      <div className="bg-base-200 px-3 sm:px-0 p-10">
         <section className="container mx-auto text-center bg-base-100 card w-fit p-15">
           <h1 className="text-orange-400 font-black text-3xl">User Not Logged In!!</h1>
           <p className="text-gray-500 font-bold pt-16 pb-2">Sign In Below to Get the Details of the Product.</p>

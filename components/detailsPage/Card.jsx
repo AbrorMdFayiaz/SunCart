@@ -21,9 +21,9 @@ useEffect(()=>{
 }
 ,[id])
   return (
-    <div className="bg-base-200 py-10">
+    <div className="bg-base-200 py-10 px-3 sm:px-0">
       <article className="card bg-base-100 shadow-sm container mx-auto flex justify-between">
-        <div className=" flex gap-12 items-center p-8">
+        <div className="flex flex-col sm:flex-row  gap-12 items-center p-8">
           {/* Left Section : Image */}
 
           <section className="my-auto">
@@ -48,14 +48,13 @@ useEffect(()=>{
           <section className="space-y-4">
           {/* Brand & Product Name */}
             <p className="text-orange-600 font-bold">{item.brand}</p>
-            <h2 className="card-title font-black text-3xl">
+            <h2 className="card-title font-black text-xl md:text-3xl">
               {item.name}
             </h2>
 
             {/* 2 Badges - Rating & Stock */}
             <section
-              className="
-space-x-4"
+              className="flex gap-4 flex-col sm:flex-col md:flex-row "
             >
               <p className="badge rounded-2xl text-orange-800 bg-orange-100 border-orange-200 font-bold">
                 <FaStar className="text-yellow-400" />
@@ -69,8 +68,8 @@ space-x-4"
             {/* Price */}
 
             <article className=" flex items-end">
-              <h3 className="font-black text-3xl">${item.price} </h3>
-              <p className="text-gray-400 text-base font-bold ml-1">
+              <h3 className="font-black text-xl md:text-3xl">${item.price} </h3>
+              <p className="text-gray-400 text-sm md:text-base font-bold ml-1">
                 USD (Free Shipping)
               </p>
             </article>
@@ -81,23 +80,23 @@ space-x-4"
             </p>
             {/* Divider */}
             <div className="divider"></div>
-            <section className="grid grid-cols-4 gap-4 py-4">
+            <section className="grid grid-cols-4  gap-4 py-4">
               {/* 2 Buttons - Add To Cart & Buy Now */}
               <Link
                 href={"/products"}
-                className="text-base font-bold col-span-3 btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none py-6"
+                className="text-md font-bold col-span-2 xl:col-span-3 btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none py-6 lg:text-base"
               >
                 <FaCartShopping /> Add to Cart
               </Link>
               <Link
                 href={"/profile"}
-                className="text-base font-bold col-span-1 btn rounded-2xl bg-black border-none text-white py-6"
+                className="text-md font-bold xl:col-span-1 col-span-2 btn rounded-2xl bg-black border-none text-white py-6  lg:text-base"
               >
                 Buy Now
               </Link>
             </section>
             {/* Garuntee Info */}
-            <h1 className="w-full btn rounded-2xl bg-orange-50 border-orange-100 border text-orange-800 py-6">
+            <h1 className="w-full rounded-2xl bg-orange-50 border-orange-100 border text-orange-800 p-3 text-center font-bold  text-sm md:text-base">
               Verified Authentic Summer Product. 30-day money-back guarantee
               included.
             </h1>

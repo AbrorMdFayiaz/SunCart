@@ -6,7 +6,7 @@ import Cards from './Cards'
 
 const MostWantedSection = () => {
   return (
-    <div className='bg-base-200 py-15'>
+    <div className='bg-base-200 py-15 px-2  md:px-0'>
         <div className=' container mx-auto'>
           <TopSection></TopSection>
           <Cards></Cards>

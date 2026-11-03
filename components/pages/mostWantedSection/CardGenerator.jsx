@@ -8,9 +8,9 @@ const CardGenerator = ({item:a}) => {
     <div>
         <article className="card bg-base-100 shadow-sm h-full">
             <section className='relative h-full'>
-                <div className="badge bg-blue-950 rounded-2xl  font-bold text-white absolute top-13 right-13"><FaStar className='text-yellow-400'/>{a.rating}</div>
-                <div className="badge absolute top-13 left-13 text-black font-bold shadow-lg">{a.category}</div>
-                <figure className="px-10 pt-10 flex">
+                <div className="badge bg-blue-950 rounded-2xl text-sm sm:text-base font-bold text-white absolute top-4 sm:top-13 right-4 sm:right-13"><FaStar className='text-yellow-400'/>{a.rating}</div>
+                <div className="badge absolute  top-4 sm:top-13 left-4 sm:left-13 text-black font-bold shadow-lg">{a.category}</div>
+                <figure className="sm:px-10 sm:pt-10 flex">
                     <Image
                       src={a.image}
                       alt={a.alt}

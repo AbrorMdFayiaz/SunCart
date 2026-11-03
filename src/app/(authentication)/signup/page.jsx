@@ -204,7 +204,7 @@ const page = () => {
         </button>
         <h1 className="text-sm pt-2">
           Already have an account?
-          <Link href={"/signin"} className="text-orange-500 font-semibold">
+          <Link href={"/signin"} className="pl-2 block sm:inline-block text-orange-500 font-semibold">
             {" "}
             Login here
           </Link>
