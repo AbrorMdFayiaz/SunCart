@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { FaArrowRight, FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const NavRightPortion = () => {
   const router = useRouter();
@@ -19,7 +20,9 @@ const NavRightPortion = () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.replace("/"); // redirect to login page
+          router.replace("/");
+          toast.success("Logged out successfully.");
+
         },
       },
     });

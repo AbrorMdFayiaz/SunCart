@@ -7,6 +7,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaSun } from "react-icons/fa";
 import { createAuthClient } from "better-auth/client";
+import { toast, ToastContainer } from "react-toastify";
 
 const page = () => {
   const {
@@ -29,20 +30,26 @@ const page = () => {
         image: formHookData.photo, // User image URL (optional)
         callbackURL: "/signin", // A URL to redirect to after the user verifies their email (optional)
       },
-      {
+      // {
         // onRequest => {
         //     //show loading
         // },
-        onSuccess: () => {
-          //redirect to the dashboard or sign in page
-          console.log(data, error, "up");
-        },
-        // onError => {
-        //     // display the error message
-        //     alert(ctx.error.message);
+        // onSuccess: () => {
+        //   //redirect to the dashboard or sign in page
+        //   toast.success("Sign-Up successful.");
         // },
-      },
+        // onError:() => {
+        //     // display the error message
+        //     toast.error(error.message);
+        // },
+      // },
     );
+
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Sign-Up successful.");
+    }
     // google signin through better-auth
   };
   const googleSignInHandler = async () => {
@@ -50,7 +57,13 @@ const page = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    console.log(data, "google sign in data");
+    // console.log(data, "google sign in data");
+    if (data.error) {
+      toast.error(data.error.message);
+    }
+    else{
+      toast.success("Google Sign-Up successful.");
+    }
   };
   return (
     <div className="">
@@ -210,6 +223,7 @@ const page = () => {
           </Link>
         </h1>
       </Card>
+      <ToastContainer />
     </div>
   );
 };

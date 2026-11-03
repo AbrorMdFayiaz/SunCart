@@ -1,12 +1,12 @@
 "use client";
 import { authClient } from "@/app/lib/auth-client";
 import { Button, Card, Form, Input, Label, TextField } from "@heroui/react";
-import { router } from "better-auth/api";
 import { createAuthClient } from "better-auth/react";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaSun } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 const page = () => {
   const {
@@ -26,8 +26,14 @@ const page = () => {
         email:formHookData.email, // user email address
         password:formHookData.password, // user password -> min 8 characters by default
         callbackURL: "/" // A URL to redirect to after the user verifies their email (optional)
-    }, 
+    }
 );
+
+if (error) {
+  toast.error(error.message);
+} else {
+  toast.success("Log-In successful");
+}
 
 
 
@@ -40,6 +46,12 @@ const page = () => {
       provider: "google",
     });
     console.log(data, "google sign in data");
+        if (data.error) {
+          toast.error(data.error.message);
+        }
+        else{
+          toast.success("Google Sign-Up successful.");
+        }
   };
 
 
@@ -165,6 +177,7 @@ const page = () => {
               </Link>
             </h1>
     </Card>
+    <ToastContainer />
     </div>
   )
 }
