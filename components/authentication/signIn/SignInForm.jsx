@@ -57,6 +57,7 @@ console.log(params, params.get("callbackUrl"), "params-IN-SIGNIN-PAGE");
     const authClient = createAuthClient();
     const data = await authClient.signIn.social({
       provider: "google",
+      callbackURL: `${params.get("callbackUrl")}` || "/", // A URL to redirect to after the user verifies their email (optional)
     });
     // console.log(data, "google sign in data");
     if (data.error) {
