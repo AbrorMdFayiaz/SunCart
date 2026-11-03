@@ -53,7 +53,7 @@ const NavRightPortion = () => {
           </Link>
           <button
             onClick={() => signOutHandler()}
-            className="btn gap-1.5 justify-center items-center hover:bg-amber-400 p-4 rounded-3xl"
+            className="btn gap-1.5 justify-center items-center hover:bg-orange-400 p-4 rounded-3xl"
           >
             <FiLogOut className="font-bold" />
             <span className="hidden sm:inline"> Logout</span>
