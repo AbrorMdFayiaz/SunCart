@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ☀️ SunCart – Summer Essentials Store
 
-## Getting Started
+A modern and responsive summer eCommerce platform where users can explore and purchase summer essentials, including sunglasses, outfits, skincare products, and beach accessories.
 
-First, run the development server:
+SunCart provides a smooth shopping experience with product browsing, detailed product information, and secure authentication powered by Better Auth.
+
+## 🌐 Live Website
+
+**Live URL:** [https://sun-cart-omega.vercel.app]
+
+**GitHub Repository:** [https://github.com/AbrorMdFayiaz/SunCart]
+
+---
+
+## 🎯 Project Purpose
+
+The purpose of SunCart is to make shopping for summer essentials simple and convenient. Users can explore seasonal products, discover popular brands, view product details, and manage their profiles through an easy-to-use interface.
+
+## ✨ Key Features
+
+- **Responsive Design:** Optimized for mobile, tablet, and desktop devices.
+- **Modern Homepage:** Includes a summer-themed hero section, promotional offers, and featured products.
+- **Product Collection:** Browse summer essentials with product images, prices, ratings, and other information.
+- **Product Details:** View detailed product information. Authentication is required to access protected product details.
+- **User Authentication:** Register and log in using email and password with Better Auth.
+- **Google Authentication:** Sign in or register using a Google account.
+- **User Profile:** View personal information, including name, email, and profile image.
+- **Profile Update:** Update profile information, including name and profile image.
+- **Summer Care Tips:** Explore useful tips for staying comfortable and protected during summer.
+- **Top Brands:** Discover selected brands featured in the store.
+- **Persistent Layout:** Shared navigation bar and footer across the application.
+
+## 🛠️ Technologies Used
+
+- **Next.js** – React framework and application routing.
+- **React** – Building interactive user interfaces.
+- **Tailwind CSS** – Utility-first styling.
+- **HeroUI , DaisyUI** – UI components.
+- **Better Auth** – Authentication and session management.
+- **MongoDB** – Database for authentication-related user data.
+
+## 📦 NPM Packages
+
+The project uses the following packages:
+
+- `next`
+- `react`
+- `react-dom`
+- `better-auth`
+- `@heroui/react`
+- `react-hook-form`
+- `react-toastify`
+- `react-icons`
+- `tailwindcss`
+- `mongodb`
+
+*Note: Make sure this list matches the dependencies actually installed in your project's `package.json`. Add or remove packages as needed.*
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd your-project-folder
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env.local` file in the root directory of the project.
+
+Add the environment variables required by your application:
+
+```env
+BETTER_AUTH_SECRET=your_better_auth_secret
+BETTER_AUTH_URL=http://localhost:3000
+
+MONGODB_URI=your_mongodb_connection_string
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+Replace the example values with your actual configuration. The variable names must match the ones used in your application.
+
+**Important:** Never commit your `.env.local` file or expose secret keys in your source code.
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Product Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+SunCart uses static JSON data to manage its summer product collection.
 
-## Learn More
+Each product contains information such as:
 
-To learn more about Next.js, take a look at the following resources:
+- Product ID
+- Product name
+- Brand
+- Price
+- Rating
+- Stock availability
+- Description
+- Product image
+- Category
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔐 Authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+SunCart uses Better Auth to provide authentication functionality.
 
-## Deploy on Vercel
+Users can:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Create an account using their name, email, profile image URL, and password.
+- Log in using email and password.
+- Authenticate using Google.
+- Access protected product details after logging in.
+- View and update their profile information.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
+
+The application is deployed using **Vercel**.
+
+For deployment, configure the required environment variables in your hosting platform and make sure the authentication and Google OAuth callback URLs are configured for your deployed domain.
+
+---
+
+**Made with ☀️ for a better summer shopping experience!**
