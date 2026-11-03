@@ -10,6 +10,12 @@ import { createAuthClient } from "better-auth/client";
 import { toast, ToastContainer } from "react-toastify";
 
 const page = () => {
+
+// pathname and searchParams for callbackUrl
+  const params= useSearchParams();
+console.log(params, params.get("callbackUrl"), "params-IN-SIGNUP-PAGE"); 
+
+
   const {
     register,
     handleSubmit,
@@ -223,7 +229,7 @@ const page = () => {
         <h1 className="text-sm pt-2">
           Already have an account?
           <Link
-            href={"/signin"}
+            href={`/signin?callbackUrl=${encodeURIComponent(params.get("callbackUrl"))}`}
             className="pl-2 block sm:inline-block text-orange-500 font-semibold"
           >
             {" "}

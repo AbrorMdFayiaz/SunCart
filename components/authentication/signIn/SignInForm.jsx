@@ -43,7 +43,7 @@ console.log(params, params.get("callbackUrl"), "params-IN-SIGNIN-PAGE");
     const { data, error } = await authClient.signIn.email({
       email: formHookData.email, // user email address
       password: formHookData.password, // user password -> min 8 characters by default
-      callbackURL: `${params.get("callbackUrl")}`, // A URL to redirect to after the user verifies their email (optional)
+      callbackURL: `${params.get("callbackUrl")}` || "/products", // A URL to redirect to after the user verifies their email (optional)
     });
 
     if (error) {
@@ -192,7 +192,7 @@ console.log(params, params.get("callbackUrl"), "params-IN-SIGNIN-PAGE");
         <h1 className="text-sm pt-2">
           Don't have an account?
           <Link
-            href={"/signup"}
+            href={`/signup?callbackUrl=${encodeURIComponent(params.get("callbackUrl"))}`}
             className="block sm:inline-block text-orange-500 font-semibold pl-2"
           >
             {"   "}
