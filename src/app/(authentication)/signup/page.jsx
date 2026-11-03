@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { FaSun } from "react-icons/fa";
 import { createAuthClient } from "better-auth/client";
 import { toast, ToastContainer } from "react-toastify";
+import { useSearchParams } from "next/navigation";
 
 const page = () => {
 
