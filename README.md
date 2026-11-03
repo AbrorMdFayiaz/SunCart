@@ -6,9 +6,8 @@ SunCart provides a smooth shopping experience with product browsing, detailed pr
 
 ## 🌐 Live Website
 
-**Live URL:** [https://sun-cart-omega.vercel.app]
-
-**GitHub Repository:** [https://github.com/AbrorMdFayiaz/SunCart]
+- **Live URL:** [SunCart – Live Demo](https://sun-cart-omega.vercel.app)
+- **GitHub Repository:** [View Source Code](https://github.com/AbrorMdFayiaz/SunCart)
 
 ---
 
