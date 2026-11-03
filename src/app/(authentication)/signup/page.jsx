@@ -31,17 +31,17 @@ const page = () => {
         callbackURL: "/signin", // A URL to redirect to after the user verifies their email (optional)
       },
       // {
-        // onRequest => {
-        //     //show loading
-        // },
-        // onSuccess: () => {
-        //   //redirect to the dashboard or sign in page
-        //   toast.success("Sign-Up successful.");
-        // },
-        // onError:() => {
-        //     // display the error message
-        //     toast.error(error.message);
-        // },
+      // onRequest => {
+      //     //show loading
+      // },
+      // onSuccess: () => {
+      //   //redirect to the dashboard or sign in page
+      //   toast.success("Sign-Up successful.");
+      // },
+      // onError:() => {
+      //     // display the error message
+      //     toast.error(error.message);
+      // },
       // },
     );
 
@@ -60,8 +60,7 @@ const page = () => {
     // console.log(data, "google sign in data");
     if (data.error) {
       toast.error(data.error.message);
-    }
-    else{
+    } else {
       toast.success("Google Sign-Up successful.");
     }
   };
@@ -185,7 +184,10 @@ const page = () => {
             </div>
           </Card.Footer>
         </Form>
-        <button onClick={() => googleSignInHandler()} className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
+        <button
+          onClick={() => googleSignInHandler()}
+          className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300"
+        >
           <svg
             aria-label="Google logo"
             width="16"
@@ -217,13 +219,15 @@ const page = () => {
         </button>
         <h1 className="text-sm pt-2">
           Already have an account?
-          <Link href={"/signin"} className="pl-2 block sm:inline-block text-orange-500 font-semibold">
+          <Link
+            href={"/signin"}
+            className="pl-2 block sm:inline-block text-orange-500 font-semibold"
+          >
             {" "}
             Login here
           </Link>
         </h1>
       </Card>
-      <ToastContainer />
     </div>
   );
 };

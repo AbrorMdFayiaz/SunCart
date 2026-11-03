@@ -18,26 +18,20 @@ const page = () => {
   });
   const onSubmit = async (formHookData) => {
     // react hook form
-    console.log(formHookData , "ab")
-
+    console.log(formHookData, "ab");
 
     // better auth
-    const  { data, error } = await authClient.signIn.email({
-        email:formHookData.email, // user email address
-        password:formHookData.password, // user password -> min 8 characters by default
-        callbackURL: "/" // A URL to redirect to after the user verifies their email (optional)
+    const { data, error } = await authClient.signIn.email({
+      email: formHookData.email, // user email address
+      password: formHookData.password, // user password -> min 8 characters by default
+      callbackURL: "/", // A URL to redirect to after the user verifies their email (optional)
+    });
+
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Log-In successful");
     }
-);
-
-if (error) {
-  toast.error(error.message);
-} else {
-  toast.success("Log-In successful");
-}
-
-
-
-
   };
 
   const googleSignInHandler = async () => {
@@ -46,25 +40,27 @@ if (error) {
       provider: "google",
     });
     console.log(data, "google sign in data");
-        if (data.error) {
-          toast.error(data.error.message);
-        }
-        else{
-          toast.success("Google Sign-Up successful.");
-        }
+    if (data.error) {
+      toast.error(data.error.message);
+    } else {
+      toast.success("Google Sign-Up successful.");
+    }
   };
 
-
   return (
-    <div className=''>
-            <Card className="mx-auto max-w-md text-center">
-      <Card.Header className='space-y-5 pb-5'>
-        {/* logo icon */}
-        <div className='mx-auto p-3.5 rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 w-fit text-white'><FaSun className='text-3xl'/></div>
-        {/*  */}
-        <Card.Title className='text-3xl font-black'>Welcome Back</Card.Title>
-        <Card.Description>Sign in to your SunCart account to continue</Card.Description>
-      </Card.Header>
+    <div className="">
+      <Card className="mx-auto max-w-md text-center">
+        <Card.Header className="space-y-5 pb-5">
+          {/* logo icon */}
+          <div className="mx-auto p-3.5 rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 w-fit text-white">
+            <FaSun className="text-3xl" />
+          </div>
+          {/*  */}
+          <Card.Title className="text-3xl font-black">Welcome Back</Card.Title>
+          <Card.Description>
+            Sign in to your SunCart account to continue
+          </Card.Description>
+        </Card.Header>
         <Form onSubmit={handleSubmit(onSubmit)} className="text-left">
           <Card.Content>
             <div className="flex flex-col gap-4 ">
@@ -139,47 +135,52 @@ if (error) {
             </div>
           </Card.Footer>
         </Form>
-            <button onClick={()=>googleSignInHandler()} className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300">
-              <svg
-                aria-label="Google logo"
-                width="16"
-                height="16"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <g>
-                  <path d="m0 0H512V512H0" fill="#fff"></path>
-                  <path
-                    fill="#34a853"
-                    d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                  ></path>
-                  <path
-                    fill="#4285f4"
-                    d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                  ></path>
-                  <path
-                    fill="#fbbc02"
-                    d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                  ></path>
-                  <path
-                    fill="#ea4335"
-                    d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                  ></path>
-                </g>
-              </svg>
-              Continue with Google
-            </button>
-            <h1 className="text-sm pt-2">
-              Don't have an account? 
-               <Link href={"/signup"} className="block sm:inline-block text-orange-500 font-semibold pl-2">
-                {"   "}
-                Regester here
-              </Link>
-            </h1>
-    </Card>
-    <ToastContainer />
+        <button
+          onClick={() => googleSignInHandler()}
+          className="btn bg-white text-black border-[#e5e5e5] rounded-2xl w-full hover:bg-base-300"
+        >
+          <svg
+            aria-label="Google logo"
+            width="16"
+            height="16"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path
+                fill="#fbbc02"
+                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+              ></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Continue with Google
+        </button>
+        <h1 className="text-sm pt-2">
+          Don't have an account?
+          <Link
+            href={"/signup"}
+            className="block sm:inline-block text-orange-500 font-semibold pl-2"
+          >
+            {"   "}
+            Regester here
+          </Link>
+        </h1>
+      </Card>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

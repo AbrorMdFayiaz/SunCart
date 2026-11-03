@@ -48,7 +48,7 @@ const NavRightPortion = () => {
                 alt="profile picture"
               ></Image>
             </div>
-            <section className="text-gray-600 my-auto hidden lg:flex">{user?.name}</section>
+            <section className="text-gray-600 my-auto hidden lg:flex lg:flex-row">{user?.name}</section>
           </Link>
           <button
             onClick={() => signOutHandler()}

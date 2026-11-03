@@ -16,17 +16,22 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FiLogOut } from "react-icons/fi";
 import { IoIosMail } from "react-icons/io";
 import { PiSignInBold } from "react-icons/pi";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
-    const router = useRouter();
+  const router = useRouter();
   const { data: session } = authClient.useSession();
   console.log(session?.user, "see");
   if (!session) {
     return (
       <div className="bg-base-200  p-10 ">
         <section className="container mx-auto text-center bg-base-100 card w-fit p-15">
-          <h1 className="text-orange-400 font-black text-3xl">No User Data Exists !!</h1>
-          <p className="text-gray-500 font-bold pt-16 pb-2">Sign In Below to Get User Info.</p>
+          <h1 className="text-orange-400 font-black text-3xl">
+            No User Data Exists !!
+          </h1>
+          <p className="text-gray-500 font-bold pt-16 pb-2">
+            Sign In Below to Get User Info.
+          </p>
           <Link
             href={"/signin"}
             className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-base"
@@ -39,19 +44,18 @@ const ProfilePage = () => {
     );
   }
 
-    // signout functionality
-    const signOutHandler = async () => {
-      await authClient.signOut({
-        fetchOptions: {
-          onSuccess: () => {
-            router.replace("/");
+  // signout functionality
+  const signOutHandler = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.replace("/");
           router.refresh(); // redirect to login page
-          },
+          toast.success("Logged out successfully.");
         },
-      });
-    };
-
-
+      },
+    });
+  };
 
   const user = session?.user;
   return (
@@ -90,8 +94,8 @@ const ProfilePage = () => {
             <div className="divider"></div>
 
             {/* <article className="grid grid-cols-3 gap-4"> */}
-              {/* 1 */}
-              {/* <div className="">
+            {/* 1 */}
+            {/* <div className="">
                 <Card className=" gap-2  bg-orange-50 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="text-orange-600 font-bold">
@@ -104,8 +108,8 @@ const ProfilePage = () => {
                 </Card>
               </div> */}
 
-              {/* 2 */}
-              {/* <div className="">
+            {/* 2 */}
+            {/* <div className="">
                 <Card className=" gap-2 bg-base-200 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="font-medium text-gray-500">
@@ -117,8 +121,8 @@ const ProfilePage = () => {
                   </Card.Header>
                 </Card>
               </div> */}
-              {/* 3 */}
-              {/* <div className="">
+            {/* 3 */}
+            {/* <div className="">
                 <Card className=" gap-2 bg-base-200 p-6 rounded-2xl">
                   <Card.Header>
                     <Card.Description className="font-medium text-gray-500">
@@ -143,7 +147,10 @@ const ProfilePage = () => {
                 <FaUserEdit /> Update Information
               </Link>
 
-              <button onClick={()=>signOutHandler()} className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-xs sm:text-base">
+              <button
+                onClick={() => signOutHandler()}
+                className="flex gap-1.5 justify-center items-center bg-[#fef2f2] p-4 px-8 rounded-3xl text-orange-600 font-bold text-xs sm:text-base"
+              >
                 Logout
               </button>
             </section>
