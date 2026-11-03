@@ -3,12 +3,23 @@ import { authClient } from "@/app/lib/auth-client";
 import { Button, Card, Form, Input, Label, TextField } from "@heroui/react";
 import { createAuthClient } from "better-auth/react";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaSun } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 
 const page = () => {
+
+
+
+
+// pathname and searchParams for callbackUrl
+  const params= useSearchParams();
+console.log(params, params.get("callbackUrl"), "params-IN-SIGNIN-PAGE"); 
+
+
+// react hook form
   const {
     register,
     handleSubmit,
@@ -16,15 +27,23 @@ const page = () => {
   } = useForm({
     defaultValues: { email: "" },
   });
+
+
+
+  
   const onSubmit = async (formHookData) => {
     // react hook form
     console.log(formHookData, "ab");
+
+
+
+
 
     // better auth
     const { data, error } = await authClient.signIn.email({
       email: formHookData.email, // user email address
       password: formHookData.password, // user password -> min 8 characters by default
-      callbackURL: "/", // A URL to redirect to after the user verifies their email (optional)
+      callbackURL: `${params.get("callbackUrl")}`, // A URL to redirect to after the user verifies their email (optional)
     });
 
     if (error) {
@@ -48,7 +67,6 @@ const page = () => {
       toast.success("Google Sign-Up successful.");
     }
   };
-
   return (
     <div className="">
       <Card className="mx-auto max-w-md text-center">

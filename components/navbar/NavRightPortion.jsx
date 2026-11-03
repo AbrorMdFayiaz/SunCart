@@ -2,7 +2,7 @@
 import { authClient } from "@/app/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import { FaArrowRight, FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
@@ -28,6 +28,9 @@ const NavRightPortion = () => {
       },
     });
   };
+
+  const params= usePathname();
+  console.log(params, "params nav"); 
   return (
     <div className="flex gap-1 sm:gap-3 font-bold items-center">
       {session ? (
@@ -64,13 +67,13 @@ const NavRightPortion = () => {
 
         <>
           <Link
-            href={"/signin"}
+            href={`/signin?callbackUrl=${encodeURIComponent(params)}`}
             className="btn btn-primary rounded-2xl bg-white border-none text-black p-4 shadow-md hover:bg-orange-400 hover:text-white flex gap-1.5 justify-center items-center"
           >
             Log In
           </Link>
           <Link
-            href={"/signup"}
+            href={`/signup?callbackUrl=${encodeURIComponent(params)}`}
             className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-4"
           >
             Register

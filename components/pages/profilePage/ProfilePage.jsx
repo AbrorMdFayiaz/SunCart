@@ -1,7 +1,7 @@
 "use client";
 import { authClient } from "@/app/lib/auth-client";
 import { Card } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -22,6 +22,10 @@ const ProfilePage = () => {
   const router = useRouter();
   const { data: session } = authClient.useSession();
   console.log(session?.user, "see");
+
+  const params= usePathname();
+
+
   if (!session) {
     return (
       <div className="bg-base-200  p-10 ">
@@ -33,7 +37,7 @@ const ProfilePage = () => {
             Sign In Below to Get User Info.
           </p>
           <Link
-            href={"/signin"}
+            href={`/signin?callbackUrl=${encodeURIComponent(params)}`}
             className="btn btn-primary rounded-2xl bg-linear-to-br from-orange-300 to-violet-600 border-none p-6 text-white font-bold text-base"
           >
             <PiSignInBold />
