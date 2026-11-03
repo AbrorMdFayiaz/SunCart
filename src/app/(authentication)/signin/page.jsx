@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import SignInForm from '../../../../components/authentication/signIn/SignInForm'
 
 const page = () => {
