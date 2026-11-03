@@ -39,10 +39,12 @@ const page = () => {
     const data = await authClient.signIn.social({
       provider: "google",
     });
-    console.log(data, "google sign in data");
+    // console.log(data, "google sign in data");
     if (data.error) {
+      console.log(data.error.message, "google sign in error");
       toast.error(data.error.message);
-    } else {
+    } if (data.data) {
+      console.log(data.data, "google sign in data");
       toast.success("Google Sign-Up successful.");
     }
   };

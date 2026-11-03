@@ -14,6 +14,7 @@ const NavRightPortion = () => {
   const { data: session } = authClient.useSession();
   console.log(session?.user, "see");
   const user = session?.user;
+  console.log(user, "user-goggle");
 
   // signout functionality
   const signOutHandler = async () => {
